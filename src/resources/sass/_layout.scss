@@ -1,0 +1,31 @@
+.scrollable-view {
+  margin-top: $scrollable-view-top-offset;
+  margin-bottom: $scrollable-view-bottom-offset;
+  margin-left: $scrollable-view-left-offset;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: .9rem;
+  //max-width: 992px;
+}
+
+.lock-height-100 {
+  height: 100%;
+}
+
+@media (min-width: 992px) {
+  .sidebar {
+    left: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .scrollable-view {
+    margin-left: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .sidebar {
+    left: -15rem;
+  }
+}

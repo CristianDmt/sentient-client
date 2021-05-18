@@ -1,0 +1,41 @@
+/** External Source imports **/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap');
+
+@import "variables";
+@import "layout";
+
+/** Variable Overrides **/
+@import "variable-overrides";
+
+/**
+ * Bootstrap
+ * Note: Temporarily for development purposes we include
+ * the entire library.
+ *
+ * TODO: Only include the required components.
+ */
+@import "~bootstrap/scss/bootstrap";
+@import "~react-vis/dist/style";
+@import '~react-toastify/scss/main';
+
+@import "../assets/css/ionicons.min";
+
+/** Element Overrides **/
+@import "elements";
+
+/** Sentient Theme **/
+body {
+  font-family: $font-family-base !important;
+  background-color: $gray-100;
+}
+
+@import "components/topbar";
+@import "components/sidebar";
+@import "components/modal";
+@import "elements/input";
+@import "elements/button";
+@import "elements/table";
+@import "pages/login";
+@import "pages/conversations";
+@import "pages/personal-details";
+@import "pages/performance";

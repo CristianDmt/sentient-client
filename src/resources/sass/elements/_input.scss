@@ -1,0 +1,84 @@
+.edit-input-action {
+  display: inline-block;
+  color: $gray-700;
+  background-color: $px-aqua;
+  margin-left: .7rem;
+  border: 0;
+  border-radius: $border-radius;
+  font-size: .75rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    box-shadow: $box-shadow-sm;
+  }
+
+  & em {
+    margin-right: .3rem;
+  }
+
+  & svg {
+    vertical-align: text-bottom;
+    margin-right: .2rem;
+  }
+}
+
+.editable-input-focused {
+  max-width: 992px;
+
+  & input {
+    font-size: .9rem;
+
+    &:focus, &:active {
+      box-shadow: none;
+      border-color: $px-pink;
+    }
+  }
+
+  & .input-group-append {
+    & button {
+      font-size: .9rem;
+      background-color: $px-pink;
+      border-color: $px-pink;
+
+      &:active, &:focus {
+        background-color: $px-pink-darker !important;
+        border-color: $px-pink-darker !important;
+        box-shadow: none;
+        outline: 0;
+      }
+    }
+  }
+}
+
+.editable-input-focused.cleany-blue {
+  & input {
+    &:focus, &:active {
+      border-color: $px-blue;
+    }
+  }
+
+  & .input-group-append {
+    & button {
+      background-color: $px-blue;
+      border-color: $px-blue;
+
+      &:active, &:focus {
+        background-color: $px-blue-darker !important;
+        border-color: $px-blue-darker !important;
+        box-shadow: none;
+        outline: 0;
+      }
+    }
+  }
+}
+
+.px-input {
+  padding: 1.30rem .7rem;
+
+  &:focus {
+    border-color: $px-pink;
+  }
+}

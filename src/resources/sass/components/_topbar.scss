@@ -1,0 +1,108 @@
+.topbar.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  padding: {
+    top: 0;
+    bottom: 0;
+  }
+  box-shadow: $box-shadow-sm;
+  z-index: 2;
+
+  &.navbar-light {
+    &.bg-light {
+      background-color: $white !important;
+
+      & .navbar-toggler {
+        border: 0;
+      }
+
+      & .navbar-brand {
+        & .logo {
+          max-height: 1.7rem;
+        }
+
+        & .brand {
+          color: $px-blue;
+          font-size: 1.7rem;
+          font-weight: 300;
+          letter-spacing: -2px;
+          vertical-align: middle;
+        }
+      }
+
+      & .navbar-nav {
+        margin-left: auto;
+        margin-right: 0 !important;
+
+        & .nav-item {
+          text-transform: uppercase;
+          font-weight: $font-weight-bold !important;
+          font-size: .8rem;
+          letter-spacing: 1px;
+          border-bottom: .2rem solid $white;
+          padding: {
+            top: .8rem;
+            bottom: .4rem;
+            left: .5rem;
+            right: .5rem;
+          }
+          box-sizing: border-box;
+          border-bottom: .2rem solid $white;
+          transition: border-color $transition-fast;
+
+          &:hover {
+            border-bottom: .2rem solid $px-pink;
+          }
+
+          & .nav-link, & .nav-link a {
+            color: $gray-700;
+            text-decoration: none;
+            vertical-align: middle;
+
+            & .ion:before {
+              font-size: 1.6rem;
+            }
+          }
+
+          &.nav-item-button {
+            color: $px-pink;
+            border: .1rem solid $px-pink;
+            border-radius: $border-radius;
+            margin: {
+              top: .3rem;
+              bottom: .3rem;
+              left: .7rem;
+              right: .7rem;
+            };
+            padding: {
+              top: .5rem;
+              bottom: .5rem;
+              left: .5rem;
+              right: .5rem;
+            };
+            word-spacing: 2px;
+
+            &.active, &:hover {
+              background-color: $px-pink;
+              box-shadow: $cleany-box-shadow-pink;
+
+              & .nav-link, & .nav-link a {
+                color: $white !important;
+                text-decoration: none;
+              }
+            }
+
+            & .nav-link, & .nav-link a {
+              color: $px-pink !important;
+            }
+
+            &.duty:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}

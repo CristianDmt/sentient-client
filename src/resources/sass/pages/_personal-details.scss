@@ -1,0 +1,24 @@
+.btn-outline-wide {
+  width: 100%;
+  color: $gray-700;
+  background-color: $white;
+  border: 1px solid $gray-300;
+  border-radius: $border-radius;
+  font-size: 2rem;
+  transition: border 300ms;
+  max-width: 992px;
+
+  &:hover {
+    color: $gray-700;
+    background-color: $white;
+    border: 1px solid $gray-600;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:active {
+    box-shadow: $box-shadow-sm;
+  }
+}

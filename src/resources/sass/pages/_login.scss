@@ -1,0 +1,16 @@
+.card-login {
+  border: 0;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+
+  & .login-logo {
+    max-width: 200px;
+  }
+
+  & .login-title {
+    color: $px-blue;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+}
