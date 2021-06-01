@@ -85,7 +85,7 @@
 
             &.active, &:hover {
               background-color: $px-pink;
-              box-shadow: $cleany-box-shadow-pink;
+              box-shadow: $px-box-shadow-pink;
 
               & .nav-link, & .nav-link a {
                 color: $white !important;

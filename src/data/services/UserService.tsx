@@ -1,29 +1,13 @@
-import CleanyApi from "../api/CleanyApi";
-import {HEADER_X_API_KEY, X_API_KEY} from "../const";
-
-interface UserAuthenticationResponse {
-    id: string;
-    username: string;
-    email: string;
-    image: string;
-    name: string;
-    phone: string;
-    rating: string;
-    roles: [string];
-    termsAccepted: boolean;
-}
+import SentientApi from "../api/SentientApi";
+import { AuthenticationResponse } from "../entities/AuthenticationResponse";
 
 export default class UserService {
-    static authenticateUser = (username: string, password: string) => {
-        return CleanyApi.post<UserAuthenticationResponse>(
-            `/login`, {
-                username: username,
-                password: password
-            }, {
-                headers: {
-                    [HEADER_X_API_KEY]: [X_API_KEY]
-                }
-            }
-        );
-    };
+  static authenticateUser = (email: string, password: string) => {
+    return SentientApi.post<AuthenticationResponse>(
+      `/auth/login`, {
+        email: email,
+        password: password
+      }
+    );
+  };
 }

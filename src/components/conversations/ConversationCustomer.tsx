@@ -1,4 +1,5 @@
 import { ChangeEvent, KeyboardEvent, useRef, useEffect } from 'react';
+
 import {
   Container,
   Row,
@@ -13,9 +14,8 @@ import {
 } from 'reactstrap';
 import { Link } from "react-router-dom";
 import { RelayClientMessage } from '../../data/entities/RelayClientMessage';
-import useSound from 'use-sound';
 
-const notification = require("../../resources/assets/audio/notification.mp3");
+import useWindowDimensions from '../../hooks/useWindowDimentions';
 
 interface Props {
   onMessage: Function;
@@ -25,13 +25,19 @@ interface Props {
   lastMessage: number;
 }
 
-const ConversationActiveComponent = (props: Props) => {
-  const [playNotification] = useSound(notification, { volume: 1 });
+const ConversationCustomerComponent = (props: Props) => {
+  const { height } = useWindowDimensions();
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const conversationBox = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    playNotification();
+    if (conversationBox.current) {
+      conversationBox.current.style.maxHeight = `${height-155}px`;
+    }
+  }, [height]);
+
+  useEffect(() => {
     scrollToBottom();
   }, [props.lastMessage]);
 
@@ -51,12 +57,12 @@ const ConversationActiveComponent = (props: Props) => {
 
   return (
     <>
-      <Container fluid className="lock-height-100">
-        <h3 className="py-3 mb-3">Conversation</h3>
+      <Container fluid className="p-4">
+        <h3 className="py-3 mb-3">Customer Support</h3>
         <Row>
           <Col lg="8">
-            <h6 className="uc-page-title mb-3">Ongoing Conversation</h6>
-            <Card className="conv-card" style={{ maxHeight: 440 }}>
+            <h6 className="uc-page-title mb-3">Conversation</h6>
+            <Card className="conv-card h-100" innerRef={conversationBox}>
               <CardBody className="overflow-auto">
                 {
                   props.messages.map((_: RelayClientMessage, i: number) => {
@@ -72,13 +78,8 @@ const ConversationActiveComponent = (props: Props) => {
                       return (
                         <>
                           <CardTitle className="uc-page-title mb-1">{_.user}</CardTitle>
-                          <Row className="conv-bubble external blue" key={i}>
-                            <Col className="col-10 align-self-center">
-                              <span>{_.message}</span>
-                            </Col>
-                            <Col className="col-2 conv-bubble-rating">
-                              <em className="ion ion-ios-thumbs-up"></em>
-                            </Col>
+                          <Row className="conv-bubble client external blue" key={i}>
+                            <span>{_.message}</span>
                           </Row>
                         </>
                       )
@@ -103,7 +104,7 @@ const ConversationActiveComponent = (props: Props) => {
                       className="px-button pink shadow-none"
                       onClick={() => props.onSendMessage()}
                     >Send</Button>
-                    <Link to="/conversations">
+                    <Link to="/conversation">
                       <Button className="px-button pink shadow-none">Leave <em className="ion ion-md-exit ion-lg"></em></Button>
                     </Link>
                   </Col>
@@ -112,17 +113,19 @@ const ConversationActiveComponent = (props: Props) => {
             </Card>
           </Col>
           <Col>
-            <h6 className="uc-page-title mb-3 mt-lg-0 mt-3">Conversation Details</h6>
+            <h6 className="uc-page-title mb-3 mt-lg-0 mt-3">Case Details</h6>
             <Card className="conv-card" style={{ maxHeight: 440 }}>
               <CardBody className="overflow-auto">
                 <CardTitle tag="h5">Case ID</CardTitle>
                 <CardText>#443</CardText>
-                <CardTitle tag="h5">Assisted Customer</CardTitle>
+                <CardTitle tag="h5">Company</CardTitle>
+                <CardText>Ubisoft</CardText>
+                <CardTitle tag="h5">Department</CardTitle>
+                <CardText>Payment Issues</CardText>
+                <CardTitle tag="h5">Assisting Agent</CardTitle>
                 <CardText>Callum Tuna</CardText>
                 <CardTitle tag="h5">Duration</CardTitle>
                 <CardText>3 minutes 25 seconds</CardText>
-                <CardTitle tag="h5">Analysis</CardTitle>
-                <CardText className="text-success">Positive</CardText>
               </CardBody>
             </Card>
           </Col>
@@ -132,4 +135,4 @@ const ConversationActiveComponent = (props: Props) => {
   );
 };
 
-export default ConversationActiveComponent;
+export default ConversationCustomerComponent;

@@ -1,19 +1,13 @@
-import {useEffect, useContext} from 'react';
+import { useEffect, useContext } from 'react';
 import ConversationsComponent from "../../components/conversations/Conversations";
-import {UserContext} from "../../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 
-interface Props {}
+interface Props { }
 
 const Conversations = (props: Props) => {
-    const userContext = useContext(UserContext);
+  const userContext = useContext(UserContext);
 
-    useEffect(() => {
-        if (userContext.userData) {
-
-        }
-    }, []);
-
-    return <ConversationsComponent/>
+  return <ConversationsComponent />
 }
 
 export default Conversations;

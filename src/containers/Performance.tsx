@@ -1,19 +1,13 @@
-import {useEffect, useContext} from 'react';
+import { useEffect, useContext } from 'react';
 import PerformanceComponent from '../components/Performance';
-import {UserContext} from "../context/UserContext";
+import { UserContext } from "../context/UserContext";
 
-interface Props {}
+interface Props { }
 
 const Performance = (props: Props) => {
-    const userContext = useContext(UserContext);
+  const userContext = useContext(UserContext);
 
-    useEffect(() => {
-        if (userContext.userData) {
-            
-        }
-    }, []);
-
-    return <PerformanceComponent/>
+  return <PerformanceComponent />
 }
 
 export default Performance;

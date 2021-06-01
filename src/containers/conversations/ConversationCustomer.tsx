@@ -1,33 +1,32 @@
-import { useEffect, useContext, useRef, useState } from 'react';
-import ConversationActiveComponent from "../../components/conversations/ConversationActive";
-import { SocketContext } from '../../context/SocketContext';
-import { UserContext } from "../../context/UserContext";
+import { useEffect, useState, useRef, useContext } from 'react';
+import ConversationCustomerComponent from "../../components/conversations/ConversationCustomer";
 import { RelayClientMessage } from '../../data/entities/RelayClientMessage';
+import useSound from 'use-sound';
+import { SocketContext } from '../../context/SocketContext';
+
+const notification = require("../../resources/assets/audio/notification.mp3");
 
 interface Props { }
 
-const ConversationActive = (props: Props) => {
-  const userContext = useContext(UserContext);
+const ConversationCustomer = (props: Props) => {
   const socketContext = useContext(SocketContext);
+  const [playNotification] = useSound(notification, { volume: 1 });
 
   const [message, setMessage] = useState<string>('');
-  const [lastMessage, setLastMessage] = useState(Date.now());
+  const [lastMessage, setForceUpdate] = useState(Date.now());
 
   const messagesRef = useRef<RelayClientMessage[]>([]);
 
   useEffect(() => {
-    socketContext.switchFocus(true);
-
-    return () => {
-      socketContext.switchFocus(false);
-    }
-  }, []);
-
-  useEffect(() => {
     if (socketContext.socket) {
       socketContext.socket.on('relay message', (data: RelayClientMessage) => { 
+        playNotification();
         onReceiveMessage(data);
       });
+    }
+
+    return () => {
+      socketContext.socket?.disconnect();
     }
   }, [socketContext.socket]);
 
@@ -40,27 +39,23 @@ const ConversationActive = (props: Props) => {
         message: message
       });
 
-      setLastMessage(Date.now());
+      setForceUpdate(Date.now());
       setMessage('');
     }
   }
 
   const onReceiveMessage = (message: RelayClientMessage) => {
+    playNotification();
+    
     messagesRef.current.push({
       user: message.user,
       message: message.message
     });
 
-    setLastMessage(Date.now());
+    setForceUpdate(Date.now());
   }
 
-  useEffect(() => {
-    if (userContext.userData) {
-
-    }
-  }, []);
-
-  return <ConversationActiveComponent
+  return <ConversationCustomerComponent 
     message={message}
     messages={messagesRef.current}
     onMessage={setMessage}
@@ -69,4 +64,4 @@ const ConversationActive = (props: Props) => {
   />
 }
 
-export default ConversationActive;
+export default ConversationCustomer;

@@ -1,15 +1,9 @@
 /* APP RELATED CONST */
-export const API_BASE_PATH = "https://api.staging.test.cleany.ro";
+export const API_BASE_PATH = "http://localhost:3001";
 
 /* REQUEST RELATED CONST */
-export const HEADER_X_API_KEY_ON_AUTH = "x-api-key";
-export const HEADER_X_API_KEY = "x-apikey";
-export const HEADER_X_APP_ID = "x-appid";
 export const HEADER_AUTHORIZATION = "Authorization";
-
-export const X_API_KEY = "o4BXRByTdhsFg1kFjE3KgTwvlFZhhMAM2HM14WOeNhDGtjDX7lIxWOeVSr39sEs7";
-export const X_APP_ID = "01ec5968-b7b4-4fca-9703-dc385fb0baac";
-export const AUTHORIZATION_MECHANISM = "Bearer";
+export const AUTHORIZATION_SCHEMA = "Bearer";
 
 export const HEADER_TOTAL_COUNT = 'x-collection-total';
 
